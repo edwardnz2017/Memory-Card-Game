@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: calc(100% - 120px);
+  height: -o-calc(100% - 120px); /* Opera */
+  height: -webkit-calc(100% - 120px); /* google, safari */
+  height: -moz-calc(100% - 120px); /* firefox */
+  background-color: #c83f11;
+}
