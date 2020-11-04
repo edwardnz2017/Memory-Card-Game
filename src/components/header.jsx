@@ -7,8 +7,8 @@ const Header = (props) => {
         <div id='head-div'>
             <h1>FOOD MEMORY CARD GAME</h1>
             <div id='score-box'>
-                <div>SCORE: 0</div>
-                <div>HIGH SCORE: 0</div>
+                <div>SCORE: {props.score}</div>
+                <div>HIGH SCORE: {props.highscore}</div>
             </div>
         </div>
     </header> 

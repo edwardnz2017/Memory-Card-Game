@@ -14,9 +14,13 @@ import sushi from './css/images/sushi.png';
 import taco from './css/images/taco.png';
 
 function App() {
-  const [cards, setCards] = useState([
+  const [score, setScore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
+  const [clicked, setClicked] = useState({});
+  let [cards, setCards] = useState([
     {
       id: 1,
+      name: 'cake',
       card: (
         <div className='itemCard'>
           <img src={cake} alt='cake' />
@@ -26,6 +30,7 @@ function App() {
     },
     {
       id: 2,
+      name: 'cheese',
       card: (
         <div className='itemCard'>
           <img src={cheese} alt='cheese' />
@@ -35,6 +40,7 @@ function App() {
     },
     {
       id: 3,
+      name: 'fish',
       card: (
         <div className='itemCard'>
           <img src={fish} alt='fish' />
@@ -44,6 +50,7 @@ function App() {
     },
     {
       id: 4,
+      name: 'hamburger',
       card: (
         <div className='itemCard'>
           <img src={hamburger} alt='hamburger' />
@@ -53,6 +60,7 @@ function App() {
     },
     {
       id: 5,
+      aname: 'noodles',
       card: (
         <div className='itemCard'>
           <img src={noodles} alt='noodles' />
@@ -62,6 +70,7 @@ function App() {
     },
     {
       id: 6,
+      name: 'pancakes',
       card: (
         <div className='itemCard'>
           <img src={pancakes} alt='pancakes' />
@@ -71,6 +80,7 @@ function App() {
     },
     {
       id: 7,
+      name: 'pizza',
       card: (
         <div className='itemCard'>
           <img src={pizza} alt='pizza' />
@@ -80,6 +90,7 @@ function App() {
     },
     {
       id: 8,
+      name: 'strawberry',
       card: (
         <div className='itemCard'>
           <img src={strawberry} alt='strawberry' />
@@ -89,6 +100,7 @@ function App() {
     },
     {
       id: 9,
+      name: 'sushi',
       card: (
         <div className='itemCard'>
           <img src={sushi} alt='sushi' />
@@ -98,6 +110,7 @@ function App() {
     },
     {
       id: 10,
+      aname: 'taco',
       card: (
         <div className='itemCard'>
           <img src={taco} alt='taco' />
@@ -109,29 +122,40 @@ function App() {
 
   useEffect(() => {
     shuffleCards(cards);
-  });
+  }, [score]);
 
-  const shuffleCards = (array) => {
-    let currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
+  function shuffleCards(array) {
+    const len = array.length;
+    for (let i = 0; i < len - 1; i++) {
+      let j = Math.floor(Math.random() * (len - (i + 1))) + (i + 1);
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
+  const addPoint = (cardName) => {
+    if (clicked.cardName) {
+      //problem here, not using the paramter
+      setScore(0);
+      setClicked(null);
+    } else {
+      setScore(score + 1);
+      setClicked({ ...clicked, name: true });
     }
 
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    //setScore(score + 1);
 
-    return array;
+    if (score >= highscore) {
+      setHighscore(highscore + 1);
+    }
   };
 
   return (
     <React.Fragment>
-      <Header />
-      <Body cards={cards} />
+      <Header score={score} highscore={highscore} />
+      <Body cards={cards} addPoints={addPoint} />
     </React.Fragment>
   );
 }

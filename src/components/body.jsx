@@ -7,7 +7,7 @@ const Body = (props) => {
     return ( 
         <main>
             {props.cards.map((itemCard) => (
-                <div key={itemCard.id}>{itemCard.card}</div>
+                <div key={itemCard.id} onClick={() => props.addPoints(itemCard.name)} >{itemCard.card}</div>
             ))}
         </main>
      );
