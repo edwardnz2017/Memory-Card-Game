@@ -60,7 +60,7 @@ function App() {
     },
     {
       id: 5,
-      aname: 'noodles',
+      name: 'noodles',
       card: (
         <div className='itemCard'>
           <img src={noodles} alt='noodles' />
@@ -110,7 +110,7 @@ function App() {
     },
     {
       id: 10,
-      aname: 'taco',
+      name: 'taco',
       card: (
         <div className='itemCard'>
           <img src={taco} alt='taco' />
@@ -122,7 +122,7 @@ function App() {
 
   useEffect(() => {
     shuffleCards(cards);
-  }, [score]);
+  });
 
   function shuffleCards(array) {
     const len = array.length;
@@ -136,19 +136,116 @@ function App() {
   }
 
   const addPoint = (cardName) => {
-    if (clicked.cardName) {
-      //problem here, not using the paramter
-      setScore(0);
-      setClicked(null);
-    } else {
-      setScore(score + 1);
-      setClicked({ ...clicked, name: true });
-    }
-
-    //setScore(score + 1);
-
-    if (score >= highscore) {
-      setHighscore(highscore + 1);
+    if (cardName === 'cake') {
+      if (clicked.cake) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, cake: true });
+      }
+    } else if (cardName === 'cheese') {
+      if (clicked.cheese) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, cheese: true });
+      }
+    } else if (cardName === 'fish') {
+      if (clicked.fish) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, fish: true });
+      }
+    } else if (cardName === 'hamburger') {
+      if (clicked.hamburger) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, hamburger: true });
+      }
+    } else if (cardName === 'noodles') {
+      if (clicked.noodles) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, noodles: true });
+      }
+    } else if (cardName === 'pancakes') {
+      if (clicked.pancakes) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, pancakes: true });
+      }
+    } else if (cardName === 'pizza') {
+      if (clicked.pizza) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, pizza: true });
+      }
+    } else if (cardName === 'strawberry') {
+      if (clicked.strawberry) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, strawberry: true });
+      }
+    } else if (cardName === 'sushi') {
+      if (clicked.sushi) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, sushi: true });
+      }
+    } else if (cardName === 'taco') {
+      if (clicked.taco) {
+        setScore(0);
+        setClicked({});
+      } else {
+        setScore(score + 1);
+        if (score >= highscore) {
+          setHighscore(highscore + 1);
+        }
+        setClicked({ ...clicked, taco: true });
+      }
     }
   };
 
